@@ -72,7 +72,7 @@ var shumaGorath = new Fighter(
 
 var spiderMan = new Fighter(
 	"Peter Benjamin Parker",
-	"Spider Man",
+	"Spider-Man",
 	"Male",
 	["Various Spider Abilities"],
 	"Hero",
@@ -171,36 +171,14 @@ var zangief = new Fighter(
 	"zangief.gif"
 	);
 
-// Array of Objects
+// Initialize Variables
 var fighters =
 [apocalypse, captainAmerica, cyclops, hulk, omegaRed, shumaGorath, spiderMan, wolverine, akuma, chunLi, dan, dhalsim, ken, ryu, sakura, zangief];
-
-// Randomly chooses a choice from the fighters array.
 var fighter = fighters[Math.floor(Math.random() * fighters.length)];
-
-// Initialize variables
 var wrongChars = [];
 var numberOfTries = fighter.nickname.length + 5;
-
-console.log(fighter.nickname);
-
-// Splits fighter's nickname into chars and returns an array
-var fighterChar = fighter.nickname.toLowerCase().split('');
-
-var hiddenChar = [];
-for (var i = 0; i < fighter.nickname.length; i++) {
-	if (fighterChar[i] === "-") {
-		hiddenChar.push("-");
-	} else if (fighterChar[i] === " ") {
-		hiddenChar.push(" ");
-	} else {
-		hiddenChar.push("_");
-	}	
-}
-
-console.log(hiddenChar);
-console.log(hiddenChar.join(" "));
-console.log(fighterChar);
+var fighterChar = fighter.nickname.toUpperCase().split(''); // Splits fighter's nickname into chars and returns an array
+var acceptChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
 // replaces a line by a char
 var replaceLine = function(array, index, char) {
@@ -208,25 +186,64 @@ var replaceLine = function(array, index, char) {
 };
 
 // function to play fighter's theme
-var playTheme = function(object) {
-	var html = 	"<audio autoplay><source src=\"assets/sounds/" + object.sound + "\" type=\"audio/mpeg\"></audio>";
+var playTheme = function(fighterObj) {
+	var html = 	"<audio autoplay><source src=\"assets/sounds/" + fighterObj.sound + "\" type=\"audio/mpeg\"></audio>";
 	document.getElementById("fighterTheme").innerHTML = html;
 } 
 
 // function to display fighter's image
-var fighterImage = function(object) {
-	var html = "<img src=\"assets/images/" + object.image + "\" alt=\"" + object.nickname + "\" >";
+var fighterImage = function(fighterObj) {
+	var html = "<img src=\"assets/images/" + fighterObj.image + "\" alt=\"" + fighterObj.nickname + "\" >";
 	document.getElementById("fighterImage").innerHTML = html;
 }
 
+// Function to create guess lines for the game
+var hideChars = function(fighterObj) {
+	var lines = [];
+	for (var i = 0; i < fighterObj.nickname.length; i++) {
+		if (acceptChars.includes(fighterChar[i])) {
+			lines.push("_");
+		} else {
+			lines.push(fighterChar[i]);
+		}
+	}
+	return lines;
+}
+
+var hiddenChar = hideChars(fighter);
+
+function resetGame(fightersObj) {
+	// Randomly chooses a choice from the fighters array.
+	fighter = fightersObj[Math.floor(Math.random() * fightersObj.length)];
+
+	// Reset variables
+	wrongChars = [];
+	hiddenChar = hideChars(fighter);
+	numberOfTries = fighter.nickname.length + 5;
+
+	console.log(fighter.nickname);
+
+	fighterChar = fighter.nickname.toUpperCase().split('');
+
+	console.log(hiddenChar);
+	console.log(hiddenChar.join(" "));
+	console.log(fighterChar);
+}
+
+	console.log(fighter.nickname);
+
+	console.log(hiddenChar);
+	console.log(hiddenChar.join(" "));
+	console.log(fighterChar);
+
 // receives user's input and checks if key exists in the fighterChar array
 document.onkeyup = function(event) {
-	var key = event.key.toLowerCase();
+	var key = event.key.toUpperCase();
 	console.log(key);
 
 	// if key exists in the figther array and number of tries is greater than 0, replaces the line by the key
 	// otherwise stores the wrong key and decrements number of tries
-	if (fighterChar.includes(key) && numberOfTries > 0) {
+	if (acceptChars.includes(key) && fighterChar.includes(key) && numberOfTries > 0) {
 		for(var i = 0; i < fighterChar.length; i++) {
 			if(fighterChar[i] === key)
 			{
@@ -234,7 +251,7 @@ document.onkeyup = function(event) {
 			}
 		}
 	} else {
-		if (!wrongChars.includes(key) && numberOfTries > 0) {
+		if (acceptChars.includes(key) && !wrongChars.includes(key) && numberOfTries > 0) {
 			wrongChars.push(key);
 			numberOfTries--;
 		}
@@ -242,22 +259,17 @@ document.onkeyup = function(event) {
 
 	// if number of tries reaches 0 
 	if (numberOfTries === 0) {
-
+		resetGame(fighters);
 	}
 
 	// if there are no more lines to guess
 	if (!hiddenChar.includes("_")) {
 		playTheme(fighter);
 		fighterImage(fighter);
+		resetGame(fighters);
 	}
 
 	console.log(wrongChars.join(" "));
 	console.log(hiddenChar.join(" "));
 
 }
-
-
-
-
-
-
