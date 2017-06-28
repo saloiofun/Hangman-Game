@@ -181,6 +181,7 @@ var wrongChars = [];
 var numberOfTries = fighter.nickname.length + 5;
 var fighterChar = fighter.nickname.toUpperCase().split(''); // Splits fighter's nickname into chars and returns an array
 var hiddenChar = hideChars(fighter, validChars, fighterChar);
+var wins = 0;
 
 // Function to create guess lines for the game
 function hideChars(fighterObj, validCharsArray, fighterCharArray) {
@@ -222,30 +223,29 @@ var resetGame = function(fightersObj) {
 	hiddenChar = hideChars(fighter, validChars, fighterChar);
 	numberOfTries = fighter.nickname.length + 5;
 
-	console.log(fighter.nickname);
+	//console.log(fighter.nickname);
 
-	console.log(hiddenChar);
-	console.log(hiddenChar.join(" "));
-	console.log(fighterChar);
+	//console.log(hiddenChar);
+	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
+	//console.log(fighterChar);
 }
 
-	console.log(fighter.nickname);
+	//console.log(fighter.nickname);
 
-	console.log(hiddenChar);
-	console.log(hiddenChar.join(" "));
-	console.log(fighterChar);
+	//console.log(hiddenChar);
+	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
+	//console.log(fighterChar);
 
 // receives user's input and checks if key exists in the fighterChar array
 document.onkeyup = function(event) {
 	var key = event.key.toUpperCase();
-	console.log(key);
+	//console.log(key);
 
 	// if key exists in the figther array and number of tries is greater than 0, replaces the line by the key
 	// otherwise stores the wrong key and decrements number of tries
 	if (validChars.includes(key) && fighterChar.includes(key) && numberOfTries > 0) {
 		for(var i = 0; i < fighterChar.length; i++) {
-			if(fighterChar[i] === key)
-			{
+			if(fighterChar[i] === key) {
 				replaceLine(hiddenChar, i, key);
 			}
 		}
@@ -263,11 +263,14 @@ document.onkeyup = function(event) {
 
 	// if there are no more lines to guess
 	if (!hiddenChar.includes("_")) {
+		wins++;
 		playTheme(fighter);
 		fighterImage(fighter);
 		resetGame(fighters);
 	}
 
-	console.log(wrongChars.join(" "));
-	console.log(hiddenChar.join(" "));
+	document.getElementById("guessesRemaining").innerHTML = numberOfTries;
+	document.getElementById("gameWins").innerHTML = "Wins: " + wins;
+	document.getElementById("wrongGuesses").innerHTML = wrongChars.join(" ");
+	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
 }
