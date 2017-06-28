@@ -174,11 +174,26 @@ var zangief = new Fighter(
 // Initialize Variables
 var fighters =
 [apocalypse, captainAmerica, cyclops, hulk, omegaRed, shumaGorath, spiderMan, wolverine, akuma, chunLi, dan, dhalsim, ken, ryu, sakura, zangief];
+var validChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
 var fighter = fighters[Math.floor(Math.random() * fighters.length)];
 var wrongChars = [];
 var numberOfTries = fighter.nickname.length + 5;
 var fighterChar = fighter.nickname.toUpperCase().split(''); // Splits fighter's nickname into chars and returns an array
-var acceptChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var hiddenChar = hideChars(fighter, validChars, fighterChar);
+
+// Function to create guess lines for the game
+function hideChars(fighterObj, validCharsArray, fighterCharArray) {
+	var lines = [];
+	for (var i = 0; i < fighterObj.nickname.length; i++) {
+		if (validCharsArray.includes(fighterCharArray[i])) {
+			lines.push("_");
+		} else {
+			lines.push(fighterCharArray[i]);
+		}
+	}
+	return lines;
+}
 
 // replaces a line by a char
 var replaceLine = function(array, index, char) {
@@ -197,33 +212,17 @@ var fighterImage = function(fighterObj) {
 	document.getElementById("fighterImage").innerHTML = html;
 }
 
-// Function to create guess lines for the game
-var hideChars = function(fighterObj) {
-	var lines = [];
-	for (var i = 0; i < fighterObj.nickname.length; i++) {
-		if (acceptChars.includes(fighterChar[i])) {
-			lines.push("_");
-		} else {
-			lines.push(fighterChar[i]);
-		}
-	}
-	return lines;
-}
-
-var hiddenChar = hideChars(fighter);
-
-function resetGame(fightersObj) {
+var resetGame = function(fightersObj) {
 	// Randomly chooses a choice from the fighters array.
 	fighter = fightersObj[Math.floor(Math.random() * fightersObj.length)];
+	fighterChar = fighter.nickname.toUpperCase().split('');
 
 	// Reset variables
 	wrongChars = [];
-	hiddenChar = hideChars(fighter);
+	hiddenChar = hideChars(fighter, validChars, fighterChar);
 	numberOfTries = fighter.nickname.length + 5;
 
 	console.log(fighter.nickname);
-
-	fighterChar = fighter.nickname.toUpperCase().split('');
 
 	console.log(hiddenChar);
 	console.log(hiddenChar.join(" "));
@@ -243,7 +242,7 @@ document.onkeyup = function(event) {
 
 	// if key exists in the figther array and number of tries is greater than 0, replaces the line by the key
 	// otherwise stores the wrong key and decrements number of tries
-	if (acceptChars.includes(key) && fighterChar.includes(key) && numberOfTries > 0) {
+	if (validChars.includes(key) && fighterChar.includes(key) && numberOfTries > 0) {
 		for(var i = 0; i < fighterChar.length; i++) {
 			if(fighterChar[i] === key)
 			{
@@ -251,7 +250,7 @@ document.onkeyup = function(event) {
 			}
 		}
 	} else {
-		if (acceptChars.includes(key) && !wrongChars.includes(key) && numberOfTries > 0) {
+		if (validChars.includes(key) && !wrongChars.includes(key) && numberOfTries > 0) {
 			wrongChars.push(key);
 			numberOfTries--;
 		}
@@ -271,5 +270,4 @@ document.onkeyup = function(event) {
 
 	console.log(wrongChars.join(" "));
 	console.log(hiddenChar.join(" "));
-
 }
