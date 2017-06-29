@@ -1,0 +1,111 @@
+@font-face {
+	font-family: 'streetfighter';
+	src: url('../fonts/ssf4_abuket.woff2') format('woff2'),
+	url('../fonts/ssf4_abuket.woff') format('woff'),
+	url('../fonts/ssf4_abuket.ttf')  format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html, body {
+	font-family: 'streetfighter', arial, sans-serif;
+	height: 100%;
+	width: 100%;
+}
+
+.box {
+	padding: 15px;
+}
+
+h1 {
+	text-align: center;
+	padding: 40px;
+	background: #e64517; /* Old browsers */
+	background: -moz-linear-gradient(top, #e64517 0%, #fad32d 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #e64517 0%,#fad32d 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #e64517 0%,#fad32d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e64517', endColorstr='#fad32d',GradientType=0 ); /* IE6-9 */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+h1::first-letter {
+	font-size: 150%;
+}
+
+.gameEdition {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 60px;
+	-webkit-text-stroke: 1px black;
+	color: white;
+	text-shadow:
+	3px 3px 0 #000,
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+}
+
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+}
+
+.logo {
+	width: auto;
+	height: 250px;
+	margin: 0 auto;
+}
+
+.game {
+	text-align: center;
+	color: white;
+}
+
+#currentWord, #guessesRemaining {
+	margin: 5px 0;
+	color: white;
+	font-size: 60px;
+	font: arial;
+	text-align: center;
+}
+
+#wrongGuesses {
+	font-size: 36px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.fighterImage {
+	position: relative; 
+	margin: 0 auto;
+}
+
+.fighterNickname {
+	font-size: 80px;
+	position: absolute; 
+	bottom: 130px; 
+	left: 0; 
+	width: 100%;
+	-webkit-text-stroke: 3px black;
+	color: white;
+	text-shadow:
+	3px 3px 0 #FFF,
+	-1px -1px 0 #FFF,  
+	1px -1px 0 #FFF,
+	-1px 1px 0 #FFF,
+	1px 1px 0 #FFF;
+}
+
+.bgImage {
+	height: 100%;
+	background-image: url("../images/bg.jpg");
+	background-position: center;
+	background-size: cover; 
+	background-repeat: no-repeat;
+	overflow-x:hidden;
+
+}
+
+.hideTheme {
+	display: none;
+}

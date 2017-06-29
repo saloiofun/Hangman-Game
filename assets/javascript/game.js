@@ -1,179 +1,95 @@
 // Fighter Constructor
-function Fighter(name, nickname, gender, power, affiliation, sound, image) {
+function Fighter(name, nickname, fightStyle, sound, image) {
 	this.name = name;
 	this.nickname = nickname;
-	this.gender = gender;
-	this.power = power;
-	this.affiliation = affiliation;
+	this.fightStyle = fightStyle;
 	this.sound = sound;
 	this.image = image;
 }
-
-// Marvel Characters
-var apocalypse = new Fighter(
-	"En Sabah Nur",
-	"Apocalypse",
-	"Male",
-	["Size Alteration", "Invulnerability", "Superhuman Attributes"],
-	"Villain",
-	"marvel/apocalypse/apocalypse.mp3",
-	"apocalypse.gif"
-	);
-
-var captainAmerica = new Fighter(
-	"Steve Rogers",
-	"Captain America",
-	"Male",
-	["Vibranium Alloy Shield", "Super Soldier Serum"],
-	"Hero",
-	"marvel/captainAmerica/captainAmerica.mp3",
-	"captainAmerica.gif"
-	);
-
-var cyclops = new Fighter(
-	"Scott Summers",
-	"Cyclops",
-	"Male",
-	["Optic Lasers"],
-	"Hero",
-	"marvel/cyclops/cyclops.mp3",
-	"cyclops.gif"
-	);
-
-var hulk = new Fighter(
-	"Dr. Robert Bruce Banner",
-	"Hulk",
-	"Male",
-	["Potentially Limitless Strength"],
-	"Hero",
-	"marvel/hulk/hulk.mp3",
-	"hulk.gif"
-	);
-
-var omegaRed = new Fighter(
-	"Arkady Gregorivich Rossovich",
-	"Omega Red",
-	"Male",
-	["Mechanical tentacles"],
-	"Villain",
-	"marvel/omegaRed/omegaRed.mp3",
-	"omegaRed.gif"
-	);
-
-var shumaGorath = new Fighter(
-	"Shuma-Gorath",
-	"Shuma-Gorath",
-	"Male",
-	["Shape Shifting", "Tentacles", "Mystic Arts"],
-	"Villain",
-	"marvel/shumaGorath/shumaGorath.mp3",
-	"shumaGorath.gif"
-	);
-
-var spiderMan = new Fighter(
-	"Peter Benjamin Parker",
-	"Spider-Man",
-	"Male",
-	["Various Spider Abilities"],
-	"Hero",
-	"marvel/spiderMan/spiderMan.mp3",
-	"spiderMan.gif"
-	);
-
-var wolverine = new Fighter(
-	"Logan",
-	"Wolverine",
-	"Male",
-	["Adamantanium Bones and Claws", "Advanced Healing Factor"],
-	"Hero",
-	"marvel/wolverine/wolverine.mp3",
-	"wolverine.gif"
-	);
 
 // Street Fighter Characters
 var akuma = new Fighter(
 	"Akuma",
 	"Akuma",
-	"Male",
-	["Unnamed Ansatsuken art", "Satsui no Hadou"],
-	"Antivillain",
-	"streetFighter/akuma/akuma.mp3",
-	"akuma.gif"
+	"Satsui no Hado, Ansatsuken",
+	"https://www.youtube.com/embed/hTD3LhS7TXE?",
+	"akuma.png"
 	);
 
 var chunLi = new Fighter(
 	"Chun-Li",
 	"Chun-Li",
-	"Female",
-	["Chinese Kenpo", "Chi"],
-	"Hero",
-	"streetFighter/chunLi/chunLi.mp3",
-	"chunLi.gif"
+	"Chinese martial arts",
+	"https://www.youtube.com/embed/EWk3Pm6M3-I?",
+	"chunLi.png"
 	);
 
 var dan = new Fighter(
 	"Dan Hibiki",
 	"Dan",
-	"Male",
-	["Saikyo Karate"],
-	"Hero",
-	"streetFighter/dan/dan.mp3",
-	"dan.gif"
+	"Saikyo \"Ultimate\" Style",
+	"https://www.youtube.com/embed/lmSYC2N8sbs?",
+	"dan.png"
 	);
 
 var dhalsim = new Fighter(
 	"Dhalsim",
 	"Dhalsim",
-	"Male",
-	["Extreme flexibility", "rubbery body", "fire manipulation"],
-	"Hero",
-	"streetFighter/dhalsim/dhalsim.mp3",
-	"dhalsim.gif"
+	"Esoteric Yoga",
+	"https://www.youtube.com/embed/P8zF56ol5Gs?",
+	"dhalsim.png"
 	);
 
 var ken = new Fighter(
 	"Ken Masters",
 	"Ken",
-	"Male",
-	["Ansatsuken Karate"],
-	"Hero",
-	"streetFighter/ken/ken.mp3",
-	"ken.gif"
+	"Ansatsuken",
+	"https://www.youtube.com/embed/Je7u4onLVC8?",
+	"ken.png"
 	);
 
 var ryu = new Fighter(
 	"Ryu",
 	"Ryu",
-	"Male",
-	["Unnamed Ansatsuken art mixed with Shoutoukan Karate"],
-	"Hero",
-	"streetFighter/ryu/ryu.mp3",
-	"ryu.gif"
+	"Ansatsuken",
+	"https://www.youtube.com/embed/swPlzzavzWg?",
+	"ryu.png"
 	);
 
 var sakura = new Fighter(
 	"Sakura Kasugano",
 	"Sakura",
-	"Female",
 	["Imitation of Ansatsuken Karate"],
-	"Hero",
-	"streetFighter/sakura/sakura.mp3",
-	"sakura.gif"
+	"https://www.youtube.com/embed/2gWGbmGD7r8?",
+	"sakura.png"
 	);
 
-var zangief = new Fighter(
-	"Zangief",
-	"Zangief",
-	"Male",
-	["Various Wrestling Moves"],
-	"Neutral",
-	"streetFighter/zangief/zangief.mp3",
-	"zangief.gif"
+var elFuerte = new Fighter(
+	"El Fuerte",
+	"El Fuerte",
+	"Lucha Libre",
+	"https://www.youtube.com/embed/FDrBjA9SCPI?",
+	"elFuerte.png"
+	);
+
+var guile = new Fighter(
+	"Guile",
+	"Guile",
+	"Martial arts and professional wrestling",
+	"https://www.youtube.com/embed/Q6XM3fDUxLg?",
+	"guile.png"
+	);
+
+var feiLong = new Fighter(
+	"Fei Long",
+	"Fei Long",
+	"Kung Fu",
+	"https://www.youtube.com/embed/kTLwCx6spkU?",
+	"feiLong.png"
 	);
 
 // Initialize Variables
-var fighters =
-[apocalypse, captainAmerica, cyclops, hulk, omegaRed, shumaGorath, spiderMan, wolverine, akuma, chunLi, dan, dhalsim, ken, ryu, sakura, zangief];
+var fighters = [akuma, chunLi, dan, dhalsim, ken, ryu, sakura, elFuerte, guile, feiLong];
 var validChars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
 var fighter = fighters[Math.floor(Math.random() * fighters.length)];
@@ -208,15 +124,13 @@ var replaceLine = function(array, index, char) {
 // function to play fighter's theme
 var playTheme = function(fighterObj) {
 	var fighterThemeDiv = document.getElementById("fighterTheme");
+	fighterThemeDiv.className = "hideTheme";
 	fighterTheme.innerHTML = "";
-	var audioElement = document.createElement("audio");
-	audioElement.autoplay = "autoplay";
-	var sourceElement = document.createElement("source");
-	sourceElement.src = "assets/sounds/" + fighterObj.sound;
-	sourceElement.type = "audio/mpeg";
-	audioElement.appendChild(sourceElement);
 
-	fighterThemeDiv.appendChild(audioElement);
+	var iframeElement = document.createElement("iframe");
+	iframeElement.src = fighterObj.sound + "&autoplay=1";
+
+	fighterThemeDiv.appendChild(iframeElement);
 } 
 
 // function to display fighter's image
@@ -225,9 +139,15 @@ var fighterImage = function(fighterObj) {
 	fighterImageDiv.innerHTML = "";
 	var imageElement = document.createElement("img");
 	imageElement.src = "assets/images/" + fighterObj.image;
+	imageElement.className = "img-responsive fighterImage"; // for Bootstrap
 	imageElement.alt = fighterObj.nickname;
 
+	var h1Element = document.createElement("h1");
+	h1Element.className = "fighterNickname";
+	h1Element.innerHTML = fighterObj.nickname;	
+
 	fighterImageDiv.appendChild(imageElement);
+	fighterImageDiv.appendChild(h1Element);
 }
 
 var resetGame = function(fightersObj) {
@@ -241,6 +161,8 @@ var resetGame = function(fightersObj) {
 	numberOfTries = fighter.nickname.length + 5;
 }
 
+innerHtmlById("guessesRemaining",numberOfTries);
+innerHtmlById("gameWins","Wins: " + wins);
 innerHtmlById("currentWord",hiddenChar.join(" "));
 
 // receives user's input and checks if key exists in the fighterChar array
