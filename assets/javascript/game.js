@@ -196,6 +196,10 @@ function hideChars(fighterObj, validCharsArray, fighterCharArray) {
 	return lines;
 }
 
+function innerHtmlById(id, add){
+	document.getElementById(id).innerHTML = add;
+}
+
 // replaces a line by a char
 var replaceLine = function(array, index, char) {
 	array[index] = char;
@@ -203,14 +207,27 @@ var replaceLine = function(array, index, char) {
 
 // function to play fighter's theme
 var playTheme = function(fighterObj) {
-	var html = 	"<audio autoplay><source src=\"assets/sounds/" + fighterObj.sound + "\" type=\"audio/mpeg\"></audio>";
-	document.getElementById("fighterTheme").innerHTML = html;
+	var fighterThemeDiv = document.getElementById("fighterTheme");
+	fighterTheme.innerHTML = "";
+	var audioElement = document.createElement("audio");
+	audioElement.autoplay = "autoplay";
+	var sourceElement = document.createElement("source");
+	sourceElement.src = "assets/sounds/" + fighterObj.sound;
+	sourceElement.type = "audio/mpeg";
+	audioElement.appendChild(sourceElement);
+
+	fighterThemeDiv.appendChild(audioElement);
 } 
 
 // function to display fighter's image
 var fighterImage = function(fighterObj) {
-	var html = "<img src=\"assets/images/" + fighterObj.image + "\" alt=\"" + fighterObj.nickname + "\" >";
-	document.getElementById("fighterImage").innerHTML = html;
+	var fighterImageDiv = document.getElementById("fighterImage");
+	fighterImageDiv.innerHTML = "";
+	var imageElement = document.createElement("img");
+	imageElement.src = "assets/images/" + fighterObj.image;
+	imageElement.alt = fighterObj.nickname;
+
+	fighterImageDiv.appendChild(imageElement);
 }
 
 var resetGame = function(fightersObj) {
@@ -222,24 +239,13 @@ var resetGame = function(fightersObj) {
 	wrongChars = [];
 	hiddenChar = hideChars(fighter, validChars, fighterChar);
 	numberOfTries = fighter.nickname.length + 5;
-
-	//console.log(fighter.nickname);
-
-	//console.log(hiddenChar);
-	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
-	//console.log(fighterChar);
 }
 
-	//console.log(fighter.nickname);
-
-	//console.log(hiddenChar);
-	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
-	//console.log(fighterChar);
+innerHtmlById("currentWord",hiddenChar.join(" "));
 
 // receives user's input and checks if key exists in the fighterChar array
 document.onkeyup = function(event) {
 	var key = event.key.toUpperCase();
-	//console.log(key);
 
 	// if key exists in the figther array and number of tries is greater than 0, replaces the line by the key
 	// otherwise stores the wrong key and decrements number of tries
@@ -269,8 +275,8 @@ document.onkeyup = function(event) {
 		resetGame(fighters);
 	}
 
-	document.getElementById("guessesRemaining").innerHTML = numberOfTries;
-	document.getElementById("gameWins").innerHTML = "Wins: " + wins;
-	document.getElementById("wrongGuesses").innerHTML = wrongChars.join(" ");
-	document.getElementById("currentWord").innerHTML = hiddenChar.join(" ");
+	innerHtmlById("guessesRemaining",numberOfTries);
+	innerHtmlById("gameWins","Wins: " + wins);
+	innerHtmlById("wrongGuesses",wrongChars.join(", "));
+	innerHtmlById("currentWord",hiddenChar.join(" "));
 }
