@@ -139,7 +139,7 @@ var fighterImage = function(fighterObj) {
 	fighterImageDiv.innerHTML = "";
 	var imageElement = document.createElement("img");
 	imageElement.src = "assets/images/" + fighterObj.image;
-	imageElement.className = "img-responsive fighterImage"; // for Bootstrap
+	imageElement.className = "img-responsive fighterPortrait"; // for Bootstrap
 	imageElement.alt = fighterObj.nickname;
 
 	var h1Element = document.createElement("h1");

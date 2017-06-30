@@ -75,9 +75,21 @@ h2 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-.fighterImage {
+.fighterPortrait {
 	position: relative; 
 	margin: 0 auto;
+	animation-duration: 1s;
+	animation-name: slidein;
+}
+
+@keyframes slidein {
+	from {
+		margin-left: -100%;
+	}
+
+	to {
+		margin-left: 0%;
+	}
 }
 
 .fighterNickname {
