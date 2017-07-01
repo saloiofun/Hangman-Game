@@ -105,7 +105,10 @@ function hideChars(fighterObj, validCharsArray, fighterCharArray) {
 	for (var i = 0; i < fighterObj.nickname.length; i++) {
 		if (validCharsArray.includes(fighterCharArray[i])) {
 			lines.push("_");
-		} else {
+		} else if (fighterCharArray[i] === " ") {
+			lines.push("&nbsp;");
+		} 
+		else {
 			lines.push(fighterCharArray[i]);
 		}
 	}
