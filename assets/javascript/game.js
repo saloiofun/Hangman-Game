@@ -99,6 +99,7 @@ var fighterChar = fighter.nickname.toUpperCase().split(''); // Splits fighter's 
 var hiddenChar = hideChars(fighter, validChars, fighterChar);
 var wins = 0;
 
+
 // Function to create guess lines for the game
 function hideChars(fighterObj, validCharsArray, fighterCharArray) {
 	var lines = [];
@@ -117,6 +118,10 @@ function hideChars(fighterObj, validCharsArray, fighterCharArray) {
 
 function innerHtmlById(id, add){
 	document.getElementById(id).innerHTML = add;
+}
+
+function reload() {
+	location.reload();
 }
 
 // replaces a line by a char
@@ -195,9 +200,27 @@ document.onkeyup = function(event) {
 	// if there are no more lines to guess
 	if (!hiddenChar.includes("_")) {
 		wins++;
+
 		playTheme(fighter);
 		fighterImage(fighter);
-		resetGame(fighters);
+		var index = fighters.indexOf(fighter);
+		fighters.splice(index, 1);
+
+		if (fighters.length > 0) {
+			resetGame(fighters);
+		} else {
+			//win game and reset button
+			innerHtmlById("game", "");
+			innerHtmlById("game", "<h1>Thank you for Playing</h1><h1>You <span>W</span>in</h1>");
+			
+			var resetBtn = document.createElement("button");
+			resetBtn.className = "btn btn-primary";
+			resetBtn.setAttribute("type", "button");
+			resetBtn.onclick = reload;
+			resetBtn.innerHTML = "Reset Game";
+			document.getElementById("game").appendChild(resetBtn);
+		}		
+
 	}
 
 	innerHtmlById("guessesRemaining",numberOfTries);
