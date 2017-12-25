@@ -24,6 +24,6 @@ As the user guesses the correct letters, reveal them: a k _ _ a.
 
 After the user wins/loses the game should automatically choose another word and make the user play it.
 
-A song will be played when the user guesses their word correctly
+A song will be played when the user guesses their word correctly.
 
 
