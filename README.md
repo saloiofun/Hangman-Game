@@ -1,6 +1,9 @@
 # Hangman-Game
 
+![Demo](assets/images/demo.png)
+
 This Hangman Game is based on Street Fighter's characters
+
 Link: https://saloiofun.github.io/Hangman-Game/
 
 ## Getting Started
