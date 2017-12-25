@@ -1,6 +1,6 @@
 # Hangman-Game
 
-![Demo](assets/images/demo.png)
+![Demo](assets/images/demo.jpg)
 
 This Hangman Game is based on Street Fighter's characters
 
