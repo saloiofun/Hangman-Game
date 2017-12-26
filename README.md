@@ -26,4 +26,11 @@ After the user wins/loses the game should automatically choose another word and 
 
 A song will be played when the user guesses their word correctly
 
+## Tools used
+
+* HTML 5
+* CSS
+* JavaScript
+* Bootstrap 3
+
 
